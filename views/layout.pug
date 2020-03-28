@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Assessment
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/style.css')
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    script(src='https://code.jquery.com/jquery-3.1.0.js')
+    script(src='/js/script.js')
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      .container
+        a.navbar-brand(href='#') #{title}
+        #navbarResponsive
+          ul.navbar-nav.ml-auto
+            if user
+              li.nav-item
+                a.nav-link(href='/user/logout') Logout 
+            else
+              li.nav-item
+                a.nav-link(href=option.id) #{option.name}
+    .container.messagesClass          
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div.alert.alert-danger #{error.msg}
+    block content
+    footer.py-5.bg-dark
+      .container
+        p.m-0.text-center.text-white Copyright &copy;2020

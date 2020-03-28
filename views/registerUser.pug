@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container.loginClass
+    .row
+      .col-lg-6.col-md-6.mb-6
+        #logbox
+          form#signup(method='post' action='/user/register')
+            h1 Register a new user
+            input.input.pass(name='name' type='text' placeholder="Your Name" autofocus='autofocus' required='required')
+            input.input.pass(name='email' type='email' placeholder='Email Address' required='required')
+            input.input.pass(name='username' placeholder="What's your username?" required='required')
+            input.input.pass(name='password' type='password' placeholder='Enter a password')
+            input.input.pass(name='password2' type='password' placeholder='Re-enter the password')
+            input.inputButton(type='submit' value='Sign up')
+      // col-md-6
+      .col-lg-6.col-md-6.mb-6
+        #logbox
+          form#signin(method='post' action='/user/login')
+            h1 Login
+            input.input.pass(name='email' type='email' placeholder='Enter your email' required='required')
+            input.input.pass(name='password' type='password' placeholder='Enter your password' required='required')
+            input.inputButton(type='submit' value='Sign in')

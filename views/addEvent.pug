@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container.myclass
+    form.form-horizontal(method='POST', action='/events/addEvent')
+      .form-group
+        label.control-label.col-sm-2(for='title') Title:
+        .col-sm-10
+          input#title.form-control(type='text' placeholder='Enter title' name='title')
+      .form-group
+        label.control-label.col-sm-2(for='date') Date:
+        .col-sm-10
+          input#date.form-control(type='date' placeholder='Enter date' name='date')
+      .form-group
+        label.control-label.col-sm-2(for='desc') Description:
+        .col-sm-10
+          textarea#description.form-control(placeholder='Description about the event' name='description')
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button.btn.btn-default(type='submit' value='Submit') Submit
+        

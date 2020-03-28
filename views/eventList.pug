@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .container.myclass
+    .row
+      .col-lg-12
+        .row
+          each event in events
+            .col-lg-4.col-md-6.mb-4
+              .card.h-100
+                .card-body
+                  h4.card-title #{event.title}
+                  small.text-muted Date : #{dateFormatter(event.date)} 
+                  br
+                  small.text-muted Organiser : #{event.organiser_name}
+                  p.card-text
+                    | #{event.description}
+                .card-footer
+                  if user
+                    if user.id == event.organiser_id
+                      .row
+                        .col-lg-6.col-sm-6.col-6
+                          a(href='/events/editEvent/' + event._id)
+                            small.text-muted(style='font-size: 20px;')
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        .col-lg-6.col-sm-6.col-6(style="text-align:right;")
+                          a(href='/events/deleteEvent/' + event._id)
+                            small.text-muted(style='font-size: 20px;color: #d10808 !important;')
+                              i.fa.fa-trash-o(aria-hidden='true')
+          if user
+            .col-lg-4.col-md-6.mb-4
+                .card.h-100
+                  .card-body(style='text-align:center;')
+                    h4.card-title Add New
+                  a(href='/events/addEvent')
+                    .card-footer(style='text-align:center;')
+                      small.text-muted
+                        i.fa.fa-plus-square-o(aria-hidden='true' style='font-size: 27px;')
+         
